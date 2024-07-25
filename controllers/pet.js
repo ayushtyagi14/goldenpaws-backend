@@ -17,14 +17,14 @@ async function fetchPets(req, res) {
     }
 }
 
-// Fetch a single pet by id
+// Fetch a single pet by slug
 async function fetchDetails(req, res) {
     try {
-        const { id } = req.params;
+        const { slug } = req.params;
         const { data: document, error } = await supabase
             .from("Puppies")
             .select("*")
-            .eq("id", id)
+            .eq("slug", slug)
             .single();
 
         if (error) {
